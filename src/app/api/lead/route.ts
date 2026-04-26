@@ -36,6 +36,10 @@ async function sendDiscordNotification(data: Record<string, string>) {
         return;
     }
 
+    // Debug URL structure safely
+    console.log(`Webhook URL Debug: Starts with ${webhookUrl.substring(0, 30)}... ends with ...${webhookUrl.substring(webhookUrl.length - 8)}`);
+    console.log("URL Length:", webhookUrl.length);
+
     console.log("Attempting to send Discord notification for client:", data.name);
 
     let contactValue = data.contact || "—";
@@ -74,6 +78,7 @@ async function sendDiscordNotification(data: Record<string, string>) {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload),
+            cache: "no-store",
         });
 
         if (!res.ok) {
