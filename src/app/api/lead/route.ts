@@ -4,16 +4,27 @@ const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL || "";
 const MONGODB_URI = process.env.MONGODB_URI || "";
 
 async function saveToMongo(data: Record<string, string>) {
-    if (!MONGODB_URI) return;
+    // Skip if no URI or if trying to use localhost in production (Vercel)
+    if (!MONGODB_URI || (process.env.NODE_ENV === "production" && MONGODB_URI.includes("localhost"))) {
+        console.log("Skipping MongoDB: Running in production with localhost URI");
+        return;
+    }
     try {
-        const { MongoClient } = await import("mongodb");
-        const client = new MongoClient(MONGODB_URI);
+        const { MongoClient, ServerApiVersion } = await import("mongodb");
+        const client = new MongoClient(MONGODB_URI, {
+            serverApi: {
+                version: ServerApiVersion.v1,
+                strict: true,
+                deprecationErrors: true,
+            },
+            connectTimeoutMS: 3000, // Trigger error faster if connection fails
+        });
         await client.connect();
         const db = client.db("portfolio");
         await db.collection("leads").insertOne({ ...data, createdAt: new Date() });
         await client.close();
     } catch (err) {
-        console.error("MongoDB error:", err);
+        console.error("MongoDB error (caught safely):", err);
     }
 }
 
