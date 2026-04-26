@@ -112,7 +112,7 @@ export default function Projects() {
                 paddingBottom: "2rem"
             }}
         >
-            <div style={{ padding: isMobile ? "2rem 2rem 1rem" : "5rem 2rem 2rem", maxWidth: "1280px", margin: "0 auto" }} ref={titleRef}>
+            <div style={{ padding: isMobile ? "6rem 2rem 2rem" : "5rem 2rem 2rem", maxWidth: "1280px", margin: "0 auto" }} ref={titleRef}>
                 <motion.p
                     variants={fadeUp}
                     initial="hidden"
@@ -219,7 +219,7 @@ function ProjectCard({ project, index, isMobile, total, t }: { project: typeof p
     const cardRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: cardRef,
-        offset: isMobile ? ["start 90%", "start 10%"] : ["start end", "start start"]
+        offset: ["start end", "start start"]
     });
 
     // Desktop Tilt Effect

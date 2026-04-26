@@ -169,24 +169,21 @@ body>* {
 
   /* Allow GSAP to manage heights for pinning */
   #business-solutions {
-    padding: 1rem 1.25rem 2rem !important;
+    padding: 2rem 1.25rem !important;
   }
 
   #hero {
     height: auto !important;
-    min-height: 95svh !important;
+    min-height: 100svh !important;
   }
 
   #hero h1 {
-    font-size: clamp(2.5rem, 14vw, 4rem) !important;
+    font-size: clamp(2rem, 12vw, 3rem) !important;
     white-space: normal !important;
-    line-height: 1.05 !important;
+    line-height: 1.1 !important;
     width: 100% !important;
-    margin-bottom: 1rem !important;
-  }
-
-  #hero p {
-    font-size: 1.1rem !important;
+    max-width: 100vw !important;
+    overflow-wrap: break-word !important;
   }
 
   /* Fix huge gaps from pinning triggers */

@@ -137,7 +137,7 @@ export default function Hero() {
         <section
             id="hero"
             ref={containerRef}
-            style={{ minHeight: "100vh", position: "relative", width: "100%", zIndex: 10 }}
+            style={{ minHeight: isMobile ? "100vh" : "220vh", position: "relative", width: "100%", zIndex: 10 }}
         >
             <div
                 style={{
@@ -150,8 +150,8 @@ export default function Hero() {
                     flexDirection: isMobile ? "column" : "row",
                     alignItems: "center",
                     justifyContent: "center",
-                    paddingTop: isMobile ? "1rem" : "0",
-                    paddingBottom: isMobile ? "1rem" : "0",
+                    paddingTop: isMobile ? "2rem" : "0",
+                    paddingBottom: isMobile ? "4rem" : "0",
                     willChange: "transform, opacity",
                     transformStyle: "preserve-3d",
                     backfaceVisibility: "hidden",
@@ -175,7 +175,7 @@ export default function Hero() {
                         pointerEvents: "none"
                     }}
                 >
-                    <div ref={initialRef} style={{ position: "relative", width: isMobile ? "240px" : "350px", height: isMobile ? "320px" : "450px", margin: "0 auto 1.5rem" }}>
+                    <div ref={initialRef} style={{ position: "relative", width: isMobile ? "180px" : "350px", height: isMobile ? "240px" : "450px", margin: "0 auto 1.5rem" }}>
                         {/* Background Colorful Glow - Softened to avoid 'box' look */}
                         <div style={{
                             position: "absolute",
