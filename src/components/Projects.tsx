@@ -112,7 +112,7 @@ export default function Projects() {
                 paddingBottom: "2rem"
             }}
         >
-            <div style={{ padding: "5rem 2rem 2rem", maxWidth: "1280px", margin: "0 auto" }} ref={titleRef}>
+            <div style={{ padding: isMobile ? "6rem 2rem 2rem" : "5rem 2rem 2rem", maxWidth: "1280px", margin: "0 auto" }} ref={titleRef}>
                 <motion.p
                     variants={fadeUp}
                     initial="hidden"

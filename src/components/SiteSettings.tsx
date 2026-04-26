@@ -17,7 +17,7 @@ export default function SiteSettings() {
     const [isLangOpen, setIsLangOpen] = useState(false);
 
     return (
-        <div style={{ position: "fixed", top: "1.5rem", right: "1.5rem", zIndex: 1000, display: "flex", gap: "10px", alignItems: "center" }}>
+        <div style={{ position: "fixed", top: "1rem", right: "1rem", zIndex: 1000, display: "flex", gap: "8px", alignItems: "center" }}>
             {/* Language Selection */}
             <div style={{ position: "relative" }}>
                 <motion.button

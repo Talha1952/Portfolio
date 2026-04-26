@@ -187,7 +187,7 @@ export default function BusinessSolutions() {
 
     return (
         <section id="business-solutions" ref={sectionRef} className="horizontal-scroll-container" style={{ background: "var(--bg-midnight)", position: "relative", zIndex: 50 }}>
-            <div style={{ padding: "3rem 2rem 1.5rem", maxWidth: "1280px", margin: "0 auto" }} ref={titleRef}>
+            <div style={{ padding: isMobile ? "4rem 2rem 1.5rem" : "3rem 2rem 1.5rem", maxWidth: "1280px", margin: "0 auto" }} ref={titleRef}>
                 <motion.p
                     variants={fadeUp}
                     initial="hidden"

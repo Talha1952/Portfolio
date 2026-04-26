@@ -150,7 +150,8 @@ export default function Hero() {
                     flexDirection: isMobile ? "column" : "row",
                     alignItems: "center",
                     justifyContent: "center",
-                    paddingTop: isMobile ? "1.5rem" : "0",
+                    paddingTop: isMobile ? "2rem" : "0",
+                    paddingBottom: isMobile ? "4rem" : "0",
                     willChange: "transform, opacity",
                     transformStyle: "preserve-3d",
                     backfaceVisibility: "hidden",
@@ -174,7 +175,7 @@ export default function Hero() {
                         pointerEvents: "none"
                     }}
                 >
-                    <div ref={initialRef} style={{ position: "relative", width: isMobile ? "200px" : "350px", height: isMobile ? "260px" : "450px", margin: "0 auto 1.5rem" }}>
+                    <div ref={initialRef} style={{ position: "relative", width: isMobile ? "180px" : "350px", height: isMobile ? "240px" : "450px", margin: "0 auto 1.5rem" }}>
                         {/* Background Colorful Glow - Softened to avoid 'box' look */}
                         <div style={{
                             position: "absolute",
@@ -223,7 +224,15 @@ export default function Hero() {
                     >
                         {t.greeting}
                     </motion.p>
-                    <h1 style={{ fontSize: isMobile ? "3rem" : "4.5rem", fontWeight: 900, fontFamily: "var(--font-display)", color: "var(--text-primary)", marginBottom: "0.5rem", whiteSpace: "nowrap" }}>
+                    <h1 style={{
+                        fontSize: isMobile ? "clamp(2.5rem, 10vw, 3.5rem)" : "4.5rem",
+                        fontWeight: 900,
+                        fontFamily: "var(--font-display)",
+                        color: "var(--text-primary)",
+                        marginBottom: "0.5rem",
+                        whiteSpace: isMobile ? "normal" : "nowrap",
+                        lineHeight: 1.1
+                    }}>
                         <TypewriterText text={t.name} />
                     </h1>
                     <div style={{ fontSize: isMobile ? "1rem" : "1.1rem", color: "var(--text-secondary)", fontWeight: 500, lineHeight: 1.5 }}>
@@ -248,7 +257,7 @@ export default function Hero() {
                     }}
                 >
                     <div style={{ textAlign: isMobile ? "center" : "left", padding: "1rem" }}>
-                        <h2 style={{ fontSize: isMobile ? "2.2rem" : "3.2rem", fontWeight: 800, color: "var(--text-primary)", marginBottom: "1.25rem", lineHeight: 1.1, fontFamily: "var(--font-display)" }}>
+                        <h2 style={{ fontSize: isMobile ? "clamp(1.8rem, 8vw, 2.5rem)" : "3.2rem", fontWeight: 800, color: "var(--text-primary)", marginBottom: "1.25rem", lineHeight: 1.1, fontFamily: "var(--font-display)" }}>
                             {t.intro_title}
                         </h2>
                         <p style={{ fontSize: isMobile ? "1rem" : "1.25rem", color: "var(--text-primary)", lineHeight: 1.65, marginBottom: isMobile ? "1.25rem" : "3.5rem", opacity: 0.9 }}>
