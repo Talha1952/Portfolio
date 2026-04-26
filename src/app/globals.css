@@ -111,12 +111,8 @@
   mask: linear-gradient(to bottom, black 80%, transparent 100%);
 }
 
-html,
-body {
-  overflow-x: hidden !important;
-  position: relative;
-  width: 100%;
-  max-width: 100%;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -124,6 +120,7 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -166,6 +163,14 @@ body>* {
 
 /* Mobile Polish */
 @media (max-width: 1024px) {
+
+  html,
+  body {
+    overflow-x: hidden !important;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+  }
 
   /* Allow GSAP to manage heights for pinning */
   #business-solutions {
