@@ -36,6 +36,14 @@ yarn-error.log*
 # vercel
 .vercel
 
+# gemini & temporary
+.gemini/
+.agent/
+.agents/
+*.py
+*.log
+/tmp/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
