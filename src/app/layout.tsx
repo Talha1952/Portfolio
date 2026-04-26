@@ -15,6 +15,13 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
+
 import SiteSettings from "@/components/SiteSettings";
 import CustomCursor from "@/components/CustomCursor";
 

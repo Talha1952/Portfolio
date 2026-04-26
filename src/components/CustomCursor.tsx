@@ -8,6 +8,8 @@ export default function CustomCursor() {
     const [trail, setTrail] = useState<{ x: number, y: number, id: number }[]>([]);
 
     useEffect(() => {
+        if (window.innerWidth <= 1024) return;
+
         const handleMove = (e: MouseEvent) => {
             setMousePos({ x: e.clientX, y: e.clientY });
             setTrail((prev) => [

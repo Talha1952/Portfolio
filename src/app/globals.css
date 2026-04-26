@@ -111,8 +111,12 @@
   mask: linear-gradient(to bottom, black 80%, transparent 100%);
 }
 
-html {
-  scroll-behavior: smooth;
+html,
+body {
+  overflow-x: hidden !important;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
 }
 
 body {
@@ -120,7 +124,6 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
