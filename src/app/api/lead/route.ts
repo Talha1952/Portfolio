@@ -29,12 +29,19 @@ async function saveToMongo(data: Record<string, string>) {
 }
 
 async function sendDiscordNotification(data: Record<string, string>) {
-    if (!DISCORD_WEBHOOK_URL) return;
+    const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+
+    if (!webhookUrl) {
+        console.error("CRITICAL: DISCORD_WEBHOOK_URL is not defined in environment variables!");
+        return;
+    }
+
+    console.log("Attempting to send Discord notification for client:", data.name);
+
     let contactValue = data.contact || "—";
 
-    // Add clickable links for common methods
+    // Add clickable links
     if (contactValue.includes("WhatsApp")) {
-        // Extract number from "WhatsApp: +123"
         const num = contactValue.split(":")[1]?.trim().replace(/[^0-9]/g, "");
         if (num) contactValue = `[${contactValue}](https://wa.me/${num})`;
     } else if (contactValue.includes("Email")) {
@@ -56,20 +63,27 @@ async function sendDiscordNotification(data: Record<string, string>) {
                     { name: "💰 Budget", value: data.budget || "—", inline: true },
                     { name: "📱 Contact", value: contactValue, inline: true },
                 ],
-                footer: { text: "⚡ Tip: Click the contact link to start the conversation!" },
+                footer: { text: "⚡ Site: talhadevsphere.vercel.app" },
                 timestamp: new Date().toISOString(),
             },
         ],
     };
 
-    const res = await fetch(DISCORD_WEBHOOK_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-    });
+    try {
+        const res = await fetch(webhookUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+        });
 
-    if (!res.ok) {
-        console.error("Discord webhook error:", res.status, await res.text());
+        if (!res.ok) {
+            const errorText = await res.text();
+            console.error("Discord API rejected the request:", res.status, errorText);
+        } else {
+            console.log("Discord notification sent successfully!");
+        }
+    } catch (fetchErr) {
+        console.error("Network error while calling Discord webhook:", fetchErr);
     }
 }
 
@@ -78,9 +92,10 @@ export async function POST(request: Request) {
         const data = await request.json();
         const { name, type, challenge, budget, contact_method, contact_detail } = data;
 
-        // Validation - updated to use new fields
-        if (!name || !type || !challenge || !budget || !contact_detail) {
-            return NextResponse.json({ error: "Missing fields" }, { status: 400 });
+        // Loosened validation for debugging - only name is strictly required
+        if (!name) {
+            console.error("Validation failed: Name is missing from request body");
+            return NextResponse.json({ error: "Name is required" }, { status: 400 });
         }
 
         const leadData = {
