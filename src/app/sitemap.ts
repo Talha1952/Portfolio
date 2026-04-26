@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     // Use the actual domain once registered, defaulting to Vercel string for now.
-    const baseUrl = 'https://talha-portfolio.vercel.app';
+    const baseUrl = 'https://talhadevsphere.vercel.app';
 
     return [
         {

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/api/',
         },
-        sitemap: 'https://talha-portfolio.vercel.app/sitemap.xml',
+        sitemap: 'https://talhadevsphere.vercel.app/sitemap.xml',
     };
 }
