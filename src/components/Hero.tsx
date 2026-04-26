@@ -137,7 +137,7 @@ export default function Hero() {
         <section
             id="hero"
             ref={containerRef}
-            style={{ minHeight: isMobile ? "100vh" : "220vh", position: "relative", width: "100%", zIndex: 10 }}
+            style={{ minHeight: "100vh", position: "relative", width: "100%", zIndex: 10 }}
         >
             <div
                 style={{
@@ -220,12 +220,11 @@ export default function Hero() {
                     </div>
 
                     <motion.p
-                        style={{ fontSize: isMobile ? "1rem" : "1.2rem", color: "var(--accent-cyan)", fontWeight: 500, marginBottom: "0.5rem" }}
+                        style={{ color: "var(--accent-cyan)", fontWeight: 500, marginBottom: "0.5rem" }}
                     >
                         {t.greeting}
                     </motion.p>
                     <h1 style={{
-                        fontSize: isMobile ? "clamp(2.5rem, 10vw, 3.5rem)" : "4.5rem",
                         fontWeight: 900,
                         fontFamily: "var(--font-display)",
                         color: "var(--text-primary)",
@@ -235,7 +234,7 @@ export default function Hero() {
                     }}>
                         <TypewriterText text={t.name} />
                     </h1>
-                    <div style={{ fontSize: isMobile ? "1rem" : "1.1rem", color: "var(--text-secondary)", fontWeight: 500, lineHeight: 1.5 }}>
+                    <div style={{ color: "var(--text-secondary)", fontWeight: 500, lineHeight: 1.5 }}>
                         Founder of DevSphere<br />
                         <span style={{ color: "var(--accent-cyan)" }}>Full Stack &amp; AI Automation Developer</span>
                     </div>
